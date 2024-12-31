@@ -4,7 +4,7 @@ class BookModel {
   author: string;
   description: string;
   copies: number;
-  copiesAvailable: number;
+  copies_available: number;
   category: string;
   img: string;
 
@@ -13,7 +13,7 @@ class BookModel {
     author: string,
     description: string,
     copies: number,
-    copiesAvailable: number,
+    copies_available: number,
     category: string,
     img: string,){
 
@@ -22,7 +22,7 @@ class BookModel {
         this.author=author;
         this.description=description;
         this.copies=copies;
-        this.copiesAvailable=copiesAvailable;
+        this.copies_available=copies_available;
         this.category=category;
         this.img=img;
   }
