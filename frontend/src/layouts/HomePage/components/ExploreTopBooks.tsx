@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export const ExploreTopBooks = () => {
   return (
@@ -7,13 +8,13 @@ export const ExploreTopBooks = () => {
         <div>
           <h1 className="display-5 fw-bold">Find your next adventure</h1>
           <p className="cold-md-8 fs-4">Where could you like to go next?</p>
-          <a
+          <NavLink
             type="button"
             className="btn main-color btn-lg text-white"
-            href="#"
+            to="/search"
           >
             Explore top books
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
