@@ -1,6 +1,7 @@
 package com.springboot.backend.config;
 
 import com.springboot.backend.entities.Book;
+import com.springboot.backend.entities.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -18,7 +19,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] theUnsupportedAction = {HttpMethod.POST, HttpMethod.PUT, HttpMethod.PATCH, HttpMethod.DELETE};
 
         config.exposeIdsFor(Book.class);
+        config.exposeIdsFor(Review.class);
         disabledhttpMethod(Book.class, config, theUnsupportedAction);
+        disabledhttpMethod(Review.class, config, theUnsupportedAction);
         cors.addMapping(config.getBasePath()+"/**").allowedOrigins(theAllOwnedOrigin);
     }
 
