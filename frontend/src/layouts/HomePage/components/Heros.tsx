@@ -1,6 +1,9 @@
+import { useOktaAuth } from "@okta/okta-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Heros = () => {
+  const { authState } = useOktaAuth();
   return (
     <div>
       <div className="d-none d-lg-block">
@@ -16,9 +19,19 @@ export const Heros = () => {
                 whether it is to learn a new skill or grow within one, we will
                 be able to provide the top content for you!
               </p>
-              <a className="btn main-color btn-lg text-white" href="#">
-                Sign up
-              </a>
+              {!authState?.isAuthenticated ? (
+                <Link className="btn main-color btn-lg text-white" to="/login">
+                  Sign up
+                </Link>
+              ) : (
+                <Link
+                  type="button"
+                  className="btn main-color btn-lg text-white"
+                  to="search"
+                >
+                  Explore top books
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -30,8 +43,8 @@ export const Heros = () => {
                 Try to check in daily as our collection is always changing! We
                 working nonstop to provide the most accurate book selecton
                 possible for our luv 2 Read student ! we are diligent about our
-                book selection and our books are always
-                going to be our top priority.
+                book selection and our books are always going to be our top
+                priority.
               </p>
             </div>
           </div>
@@ -52,21 +65,31 @@ export const Heros = () => {
                 whether it is to learn a new skill or grow within one, we will
                 be able to provide the top content for you!
               </p>
-              <a className="btn main-color btn-lg text-white" href="#">
-                Sign up
-              </a>
+              {!authState?.isAuthenticated ? (
+                <Link className="btn main-color btn-lg text-white" to="/signin">
+                  Sign up
+                </Link>
+              ) : (
+                <Link
+                  type="button"
+                  className="btn main-color btn-lg text-white"
+                  to="search"
+                >
+                  Explore top books
+                </Link>
+              )}
             </div>
           </div>
           <div className="m-2">
             <div className="col-image-right"></div>
             <div className="mt-2">
-            <h1>our collection is always changing!</h1>
+              <h1>our collection is always changing!</h1>
               <p className="lead">
                 Try to check in daily as our collection is always changing! We
                 working nonstop to provide the most accurate book selecton
                 possible for our luv 2 Read student ! we are diligent about our
-                book selection and our books are always
-                going to be our top priority.
+                book selection and our books are always going to be our top
+                priority.
               </p>
             </div>
           </div>
