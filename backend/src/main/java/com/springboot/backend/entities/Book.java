@@ -1,7 +1,8 @@
 package com.springboot.backend.entities;
 
-import lombok.*;
-import jakarta.persistence.*;
+
+//import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Book {
