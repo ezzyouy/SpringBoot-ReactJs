@@ -1,9 +1,7 @@
 package com.springboot.backend.entities;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.util.Date;
+//import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "checkout")
