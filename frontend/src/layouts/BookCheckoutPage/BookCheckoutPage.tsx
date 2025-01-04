@@ -10,6 +10,9 @@ import { useOktaAuth } from "@okta/okta-react";
 export const BookCheckoutPage = () => {
   const { authState } = useOktaAuth();
 
+  console.log(authState);
+  
+
   const [book, setBook] = useState<BookModel>();
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);

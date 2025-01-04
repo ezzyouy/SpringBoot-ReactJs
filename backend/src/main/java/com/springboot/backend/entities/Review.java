@@ -1,6 +1,5 @@
 package com.springboot.backend.entities;
 
-import lombok.*;
 //import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -13,7 +12,8 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String user_email;
+
+    private String userEmail;
     @CreationTimestamp
     private Date date;
     private double rating;
@@ -25,7 +25,7 @@ public class Review {
 
     public Review(Long id, String user_email, Date date, double rating, Long bookId, String review_description) {
         this.id = id;
-        this.user_email = user_email;
+        this.userEmail = user_email;
         this.date = date;
         this.rating = rating;
         this.bookId = bookId;
@@ -40,12 +40,12 @@ public class Review {
         this.id = id;
     }
 
-    public String getUser_email() {
-        return user_email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
+    public void setUserEmail(String user_email) {
+        this.userEmail = user_email;
     }
 
     public Date getDate() {
@@ -85,7 +85,7 @@ public class Review {
     public String toString() {
         return "Review{" +
                 "id=" + id +
-                ", user_email='" + user_email + '\'' +
+                ", user_email='" + userEmail + '\'' +
                 ", date=" + date +
                 ", rating=" + rating +
                 ", bookId=" + bookId +

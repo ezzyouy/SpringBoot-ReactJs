@@ -20,7 +20,7 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(
                         (req) ->
-                                req.antMatchers("/api/books/secure/**").authenticated())
+                                req.antMatchers("/api/books/secure/**","/api/review/secure/**").authenticated())
                 .oauth2ResourceServer((srv) -> srv.jwt(Customizer.withDefaults()));
         http.cors();
         http.setSharedObject(ContentNegotiationStrategy.class, new HeaderContentNegotiationStrategy());
