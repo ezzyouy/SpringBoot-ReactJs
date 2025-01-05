@@ -7,12 +7,13 @@ export const Review: React.FC<{ review: ReviewModel }> = (props) => {
     const longMonth = date.toLocaleString("en-us", { month: "long" });
     const dateDay = date.getDate();
     const dateYear = date.getFullYear();
-  
+    console.log("review--->",props.review);
+    
     const dateRender = longMonth + " " + dateDay + " " + dateYear;
     return (
       <div>
         <div className="col-sm-8 col-md-8">
-          <h5>{props.review.user_email}</h5>
+          <h5>{props.review.userEmail}</h5>
           <div className="row">
             <div className="col">{dateRender}</div>
             <div className="col">

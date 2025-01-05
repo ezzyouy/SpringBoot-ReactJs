@@ -5,8 +5,8 @@
 /.pnp
 .pnp.js
 node_modules
-/src/lib
-src/lib
+/src/lib/*
+src/lib/*
 # testing
 /coverage
 
