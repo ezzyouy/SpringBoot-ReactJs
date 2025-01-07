@@ -7,7 +7,6 @@ export const Review: React.FC<{ review: ReviewModel }> = (props) => {
     const longMonth = date.toLocaleString("en-us", { month: "long" });
     const dateDay = date.getDate();
     const dateYear = date.getFullYear();
-    console.log("review--->",props.review);
     
     const dateRender = longMonth + " " + dateDay + " " + dateYear;
     return (
