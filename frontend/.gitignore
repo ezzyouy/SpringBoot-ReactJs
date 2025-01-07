@@ -5,8 +5,7 @@
 /.pnp
 .pnp.js
 node_modules
-/src/lib/*
-src/lib/*
+
 # testing
 /coverage
 
@@ -24,3 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 ./src/lib
+/src/lib/*
+src/lib/*
