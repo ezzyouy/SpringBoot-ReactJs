@@ -2,10 +2,12 @@ package com.springboot.backend.services;
 
 import com.springboot.backend.entities.Book;
 import com.springboot.backend.entities.Checkout;
+import com.springboot.backend.entities.History;
 import com.springboot.backend.responsemodels.ShelfCurrentLoansResponse;
 import com.springboot.backend.respositories.BookRepository;
 import com.springboot.backend.respositories.CheckoutRepository;
 //import jakarta.transaction.Transactional;
+import com.springboot.backend.respositories.HistoryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,10 +27,13 @@ public class BookService {
 
     private CheckoutRepository checkoutRepository;
 
+    private HistoryRepository historyRepository;
 
-    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository) {
+
+    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository, HistoryRepository historyRepository) {
         this.bookRepository = bookRepository;
         this.checkoutRepository = checkoutRepository;
+        this.historyRepository = historyRepository;
     }
 
     public Book checkoutBook(String userEmail, Long bookId) throws Exception {
@@ -75,8 +80,7 @@ public class BookService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         for (Book book : books) {
-            Optional<Checkout> checkout = checkouts.stream()
-                    .filter(x -> x.getBookId() == book.getId()).findFirst();
+            Optional<Checkout> checkout = checkouts.stream().filter(x -> x.getBookId() == book.getId()).findFirst();
             if (checkout.isPresent()) {
                 Date d1 = sdf.parse(checkout.get().getReturnDate());
                 Date d2 = sdf.parse(LocalDate.now().toString());
@@ -102,10 +106,15 @@ public class BookService {
         book.get().setCopies_available(book.get().getCopies_available() + 1);
         bookRepository.save(book.get());
         checkoutRepository.deleteById(validateCheckout.getId());
+        History history = new History(userEmail, validateCheckout.getCheckoutDate(), LocalDate.now().toString(),
+
+                book.get().getTitle(), book.get().getDescription(), book.get().getAuthor(), book.get().getImg());
+
+        historyRepository.save(history);
     }
 
     public void renewLoan(String userEmail, Long bookId) throws Exception {
-        Checkout validateCheckout  = checkoutRepository.findByUserEmailAndBookId(userEmail, bookId);
+        Checkout validateCheckout = checkoutRepository.findByUserEmailAndBookId(userEmail, bookId);
         if (validateCheckout == null) {
             throw new Exception("Book doesn't exist or already checked out by user");
         }
@@ -114,8 +123,8 @@ public class BookService {
         Date d1 = sdf.parse(validateCheckout.getReturnDate());
         Date d2 = sdf.parse(LocalDate.now().toString());
 
-        if(d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0){
-            validateCheckout.setReturnDate(LocalDate.now().plusDays(7).toString() );
+        if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0) {
+            validateCheckout.setReturnDate(LocalDate.now().plusDays(7).toString());
             checkoutRepository.save(validateCheckout);
         }
 
