@@ -24,7 +24,7 @@ export const LibraryServices = () => {
               <Link
                 type="button"
                 className="btn main-color btn-lg px-4 me-md-2 fw-bold text-white"
-                to="/search"
+                to="/messages"
               >
                 Library Services
               </Link>

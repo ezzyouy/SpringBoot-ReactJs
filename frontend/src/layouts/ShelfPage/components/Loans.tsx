@@ -8,6 +8,9 @@ import { LoansModal } from "./LoansModal.tsx";
 export const Loans = () => {
   const { authState } = useOktaAuth();
 
+  console.log(authState);
+  
+
   const [httpError, setHttpError] = useState(null);
 
   const [shelfCurrentLoans, setShelfCurrentLoans] = useState<
