@@ -49,7 +49,7 @@ export const MessagesPage = () => {
             role="tabpanel"
             aria-labelledby="nav-send-message-tab"
           >
-            <PostNewMessage />
+            <PostNewMessage/>
           </div>
           <div
             className="tab-pane fade"
@@ -57,7 +57,7 @@ export const MessagesPage = () => {
             role="tabpanel"
             aria-labelledby="nav-message-tab"
           >
-            {messagesClick ? <Messages /> : <></>}
+            {messagesClick ? <Messages/> : <></>}
           </div>
         </div>
       </div>
