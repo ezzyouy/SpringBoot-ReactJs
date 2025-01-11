@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
 import { SpinnerLoading } from "../Utils/SpinnerLoading.tsx";
@@ -62,7 +63,7 @@ export const SearchBookPage = () => {
       setHttpError(error.message);
     });
     window.scrollTo(0, 0);
-  }, [currentPage, searchUrl]);
+  }, [booksPerPage, currentPage, searchUrl]);
 
   if (isLoading) {
     return <SpinnerLoading />;
