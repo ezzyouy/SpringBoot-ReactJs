@@ -47,7 +47,7 @@ export const Messages = () => {
       setHttpError(err.message);
     });
     window.scrollTo(0, 0);
-  }, [authState, currentPage]);
+  }, [authState, currentPage, messagePerPage]);
 
   if (isloadingMessages) {
     return <SpinnerLoading />;

@@ -18,10 +18,11 @@ public class SecurityConfiguration {
 
         http.csrf().disable();
 
-        http.authorizeHttpRequests(
-                        (req) ->
-                                req.antMatchers("/api/books/secure/**","/api/review/secure/**","/api/messages/secure/**").authenticated())
-                .oauth2ResourceServer((srv) -> srv.jwt(Customizer.withDefaults()));
+        http.authorizeHttpRequests((req) -> req.antMatchers("/api/books/secure/**",
+                        "/api/review/secure/**",
+                        "/api/messages/secure/**",
+                        "/api/admin/secure/**")
+                .authenticated()).oauth2ResourceServer((srv) -> srv.jwt(Customizer.withDefaults()));
         http.cors();
         http.setSharedObject(ContentNegotiationStrategy.class, new HeaderContentNegotiationStrategy());
 

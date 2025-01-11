@@ -1,14 +1,14 @@
-import { useOktaAuth } from "@okta/okta-react";
+//import { useOktaAuth } from "@okta/okta-react";
 import React, { useState } from "react";
 import { PostNewMessage } from "./components/PostNewMessage.tsx";
 import { Messages } from "./components/Messages.tsx";
 
 export const MessagesPage = () => {
-  const { authState } = useOktaAuth();
+  //const { authState } = useOktaAuth();
 
   const [messagesClick, setMessagesClick] = useState(false);
-  const [isLoadingMessage, setIsLoadingMessage] = useState(true);
-  const [httpError, setHttpError] = useState(null);
+  //const [isLoadingMessage, setIsLoadingMessage] = useState(true);
+  //const [httpError, setHttpError] = useState(null);
   return (
     <div className="container">
       <div className="mt-3 mb-2">

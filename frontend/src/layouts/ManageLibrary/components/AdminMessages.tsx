@@ -50,7 +50,7 @@ export const AdminMessages = () => {
       setIsLoadingMessages(false);
       setHttpError(err.message);
     });
-  }, [authState, currentPage, btnSubmit]);
+  }, [authState, currentPage, btnSubmit, messagesPerPage]);
 
   if (isLoadingMessages) {
     return <SpinnerLoading />;
