@@ -6,7 +6,7 @@ import com.springboot.backend.services.MessagesService;
 import com.springboot.backend.utils.ExtractJWT;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("https://localhost:3000/")
 @RestController
 @RequestMapping("/api/messages")
 public class MessagesController {
@@ -29,7 +29,7 @@ public class MessagesController {
         String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only");
-        } 
+        }
         messagesService.putMessage(adminQuestionRequest, userEmail);
     }
 }
