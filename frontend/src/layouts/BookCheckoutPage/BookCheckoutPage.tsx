@@ -11,8 +11,6 @@ import ReviewRequestModel from "../../models/ReviewRequest.ts";
 export const BookCheckoutPage = () => {
   const { authState } = useOktaAuth();
 
-  console.log(authState);
-
   const [book, setBook] = useState<BookModel>();
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
@@ -30,6 +28,8 @@ export const BookCheckoutPage = () => {
 
   const [isReviewLeft, setIsReviewLeft] = useState(false);
   const [isLoadingUserReview, setIsLoadingUserReview] = useState(true);
+
+  const [displayError, setdisplayError] = useState(false);
 
   const bookId = window.location.pathname.split("/")[2];
 
@@ -214,10 +214,14 @@ export const BookCheckoutPage = () => {
         "Content-Type": "application/json",
       },
     };
-    const chechoutBookResponse = await fetch(url, requestOption);
-    if (!chechoutBookResponse.ok) {
+    const checkoutBookResponse = await fetch(url, requestOption);
+    if (!checkoutBookResponse.ok) {
+      setdisplayError(true);
+      console.log("displayError ---->", displayError);
+
       throw new Error("Something went wrong!");
     }
+    setdisplayError(false);
     setIsCheckedOut(true);
   }
 
@@ -246,11 +250,16 @@ export const BookCheckoutPage = () => {
     if (!returnResponse.ok) {
       throw new Error("Something went wrong");
     }
-    setIsReviewLeft(true)
+    setIsReviewLeft(true);
   }
   return (
     <div>
       <div className="container d-none d-lg-block">
+        {displayError && (
+          <div className="alert alert-danger mt-3" role="alert">
+            Please pay outstanding fees and/or return late book(s).
+          </div>
+        )}
         <div className="row mt-5">
           <div className="col-sm-2 col-md-2">
             {book?.img ? (
@@ -287,6 +296,11 @@ export const BookCheckoutPage = () => {
         <LastReviews reviews={reviews} bookId={book?.id} mobile={false} />
       </div>
       <div className="container d-lg-none mt-5">
+        {displayError && (
+          <div className="alert alert-danger mt-3" role="alert">
+            Please pay outstanding fees and/or return late book(s).
+          </div>
+        )}
         <div className="d-flex justify-content-center align-items-center">
           {book?.img ? (
             <img src={book?.img} width={"226"} height={"349"} alt="Book" />

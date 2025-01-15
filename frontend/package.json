@@ -7,12 +7,15 @@
     "@okta/okta-auth-js": "^7.9.0",
     "@okta/okta-react": "^6.9.0",
     "@okta/okta-signin-widget": "^7.26.1",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.5.0",
     "cra-template-typescript": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "5",
     "react-scripts": "5.0.1",
-    "semver": "^7.6.3"
+    "semver": "^7.6.3",
+    "stripe": "^17.5.0"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
